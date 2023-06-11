@@ -6,13 +6,13 @@ while (number1.trim() == '' || isNaN(+number1)) {
 }
 
 let number2 = prompt('Введіть друге число:', '');
-while(number2.trim() == '' || isNaN(+number2)) {
+while (number2.trim() == '' || isNaN(+number2)) {
   number2 = prompt('Ви ввели не число, введіть будь ласка число:', '');
 }
 
-if (number1 == number2){
+if (number1 == number2) {
   alert('Ви ввели однакові числа!');
-}else{
+} else {
   const maxNumber = Math.max(number1, number2);
   alert(`Більше число: ${maxNumber}`);
 }
@@ -27,7 +27,7 @@ while (numberApartment.trim() == '' || isNaN(+numberApartment) || numberApartmen
 
 if (numberApartment <= 20) {
   alert("Вам потрібен перший під'їзд!");
-} else if(numberApartment >= 21 && numberApartment <= 48) {
+} else if (numberApartment >= 21 && numberApartment <= 48) {
   alert("Вам потрібен другий під'їзд!");
 } else {
   alert("Вам потрібен третій під'їзд!");
@@ -36,16 +36,16 @@ if (numberApartment <= 20) {
 // 3.Обчислення суми чисел: користувач вводить число n, треба знайти суму всіх чисел від 0 до n.
 
 let num = +prompt('Введіть число:', '');
-while(isNaN(num)) {
+while (isNaN(num)) {
   num = +prompt('Ви ввели не число, введіть число:', '');
 }
 
-let sum = 0;
-for(let i = 1; i <= num; i++) {
-  sum += i;
+let total = 0;
+for (let i = 1; i <= num; i++) {
+  total += i;
 }
 
-alert(`Сума всіх чисел від 0 до ${num} складає: ${sum}`);
+alert(`Сума всіх чисел від 0 до ${num} складає: ${total}`);
 
 /* 4.Напишіть код, який запитує логін за допомогою prompt. Якщо відвідувач вводить "Admin", тоді запропонуйте за допомогою prompt 
 ввести пароль. Якщо введено порожній рядок або натиснуто Esc – показати “Скасовано”. Якщо введено інший рядок – тоді покажіть 
@@ -59,13 +59,13 @@ if (login === 'Admin') {
 
   if (password === '' || password === null) {
     alert('Скасовано!');
-  } else if(password === 'Господар') {
+  } else if (password === 'Господар') {
   alert('Ласкаво просимо!');
   } else {
     alert('Неправильний пароль!');
   }
 
-} else if(login === '' || login === null) {
+} else if (login === '' || login === null) {
   alert('Скасовано!');
 } else {
   alert('Я вас не знаю!');
@@ -84,7 +84,7 @@ for (let i = 0; i < 3; i++) {
 }
 
 let i = 0;
-while(i < 3) {
+while (i < 3) {
   alert( `число ${i}!` );
   i++;
 }
@@ -99,4 +99,93 @@ while (numberGreater100 < 100 && numberGreater100 !== null && numberGreater100 !
   numberGreater100 = +prompt('Ви ввели не число, або число менше за 100, введіть число більше за 100:', '');
 }
 
+/* 8.Перепишіть конструкцію "switch" в аналогічну з використанням "if"
+важливість: 5
+Напишіть код з використанням if..else, що відповідає наступній конструкції switch: 
+const browser = prompt ('Ведіть ваш браузер:', '');
+switch (browser) {
+  case 'Edge':
+    alert( "You've got the Edge!" );
+    break;
 
+  case 'Chrome':
+  case 'Firefox':
+  case 'Safari':
+  case 'Opera':
+    alert( 'Ми підтримуємо і ці браузери' );
+    break;
+
+  default:
+    alert( 'Маємо надію, що ця сторінка виглядає добре!' );
+} */
+
+const browserUsed = prompt ('Ведіть ваш браузер:', '');
+
+if (browserUsed === 'Edge') {
+  alert( "You've got the Edge!" );
+} else if (browserUsed === 'Chrome'|| browserUsed === 'Firefox'|| browserUsed === 'Safari' || browserUsed === 'Opera') {
+  alert( 'Ми підтримуємо і ці браузери' );
+} else {
+  alert( 'Маємо надію, що ця сторінка виглядає добре!' );
+}
+
+/* 9.Перепишіть умови "if" в конструкцію "switch":
+let a = +prompt('a?', '');
+
+if (a == 0) {
+  alert( 0 );
+}
+if (a == 1) {
+  alert( 1 );
+}
+
+if (a == 2 || a == 3) {
+  alert( '2,3' );
+} */
+
+let a = +prompt('a?', '');
+switch (a) {
+  case 0: alert( 0 );
+    break;
+  case 1: alert( 1 );
+    break;
+  case 2:
+  case 3: alert( '2,3' );
+}
+
+/* 10.Необхідно написати програму, яка виконує складання чисел від N до M (N та M – задаються користувачем), а також 
+програма має вміти пропускати парні числа. */
+
+let num1 = prompt('Введіть перше ціле число:', '');
+
+while ((num1 === null || num1.trim() === '') || isNaN(num1) || !Number.isInteger(+num1)) {
+  if (num1 === null) {
+    alert('Скасовано!');
+    break;
+  }
+  num1 = prompt('Ви ввели не ціле число, введіть число:', '');
+}
+
+let num2 = prompt('Введіть друге ціле число, яке більзе за попереднє:', '');
+
+while ((num2 === null || num2.trim() === '') || isNaN(num2) || !Number.isInteger(+num2) || (+num2 <= +num1)) {
+  if (num2 === null) {
+    alert('Скасовано!');
+    break;
+  } else if (+num2 <= +num1 || isNaN(num2) || !Number.isInteger(+num2) || num2.trim() === '') {
+    num2 = prompt('Ви ввели не ціле число або число яке менше / рівне першому, введіть число яке більше за перше:', '');
+    continue;
+  }
+}
+
+const skipIntegers = confirm('Пропускати парні числа при додаванні?');
+
+let sum = 0;
+for (let i = +num1; i <= +num2; i++) {
+  if (skipIntegers && i % 2 == 0) {
+
+  } else {
+    sum += i;
+  }
+}
+alert(sum);
