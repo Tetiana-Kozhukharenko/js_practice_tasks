@@ -12,7 +12,7 @@ function getMaxDigit(number) {
   return maxDigit;
 }
 
-document.writeln(`Функція №1: ${getMaxDigit(2657543)} <br>`);
+document.writeln(`Функція №1: ${getMaxDigit(875)} <br>`);
 
 // 2.Створіть функцію, яка визначає ступінь числа. Не використовуючи Math.pow та **, а використовуючи цикл.
 
@@ -38,7 +38,7 @@ function formatName(name) {
   return fName
 }
 
-document.writeln(`Функція №3: ${formatName('teTiAnA')} <br>`);
+document.writeln(`Функція №3: ${formatName('tETIANA')} <br>`);
 
 /* 4.Створіть функцію, яка вираховує суму, що залишається після оплати податку від зарабітньої плати. (Податок = 18% + 1.5% ->
   19.5%). Приклад: 1000 -> 805 */
@@ -131,3 +131,75 @@ function deleteLetters(letter, word) {
 }
 
 document.writeln(`Функція №10: ${deleteLetters('a', 'blablabla')} <br>`);
+
+/* 11.Перепишіть функцію, використовуючи '?' або '||'
+function checkAge(age) {
+  if (age > 18) {
+    return true;
+  } else {
+    return confirm('Батьки дозволили?');
+  }
+}
+*/
+
+function checkAge1(age) {
+  return (age > 18) ? true : confirm('Батьки дозволили?');
+}
+
+document.writeln(`Функція №11.1: ${checkAge1(23)} <br>`);
+
+function checkAge2(age) {
+  return (age > 18) || confirm('Батьки дозволили?')
+}
+
+document.writeln(`Функція №11.2: ${checkAge2(33)} <br>`);
+
+// 12.Напишіть функцію, яка повертає менше з двох чисел.
+
+function getMinNumber(num1, num2) {
+  return Math.min(num1, num2)
+}
+
+document.writeln(`Функція №12: ${getMinNumber(31, 18)} <br>`);
+
+/* 13.Напишіть функцію яка повертає число x, піднесене до степеня n. Інакше кажучи, множить число x саме на себе n разів і повертає 
+результат, x та n задаються користувачем. Функція повинна підтримувати лише натуральні значення n, тобто цілі числа, починаючи з 1. */
+
+function getPowNumber(number, power) {
+  if (number === null || power === null) {
+    return 'Ви скасували введення чисел!';
+  } else {
+    // return number**power;
+    return Math.pow(number, power);
+  }
+}
+
+let number1 = prompt('Введіть перше число:', '');
+console.log(number1);
+
+while (number1 === null || number1.trim() === '' || isNaN(+number1)) {
+  if(number1 === null) {
+    alert('Скасовано!');
+    break;
+  } else if (number1.trim() === '' || isNaN(+number1)) {
+    number1 = prompt('Ви ввели не число, введіть перше число:');
+  } else {
+    break;
+  }
+}
+
+let number2 = prompt('Введіть друге ціле число, яке більше за 1:');
+console.log(number2);
+
+while (number2 === null || number2.trim() === '' || isNaN(+number2) || number2 < 1 || !Number.isInteger(+number2)) {
+  if(number2 === null) {
+    alert('Скасовано!');
+    break;
+  } else if (number2.trim() === '' || isNaN(+number2) || number2 < 1 || !Number.isInteger(+number2)) {
+    number2 = prompt('Ви ввели не ціле число, або число яке менше 1, введіть друге число:');
+  } else {
+    break;
+  }
+}
+
+document.writeln(`Функція №13: ${getPowNumber(number1, number2)} <br>`);
