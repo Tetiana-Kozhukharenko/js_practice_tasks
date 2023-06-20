@@ -175,7 +175,6 @@ function getPowNumber(number, power) {
 }
 
 let number1 = prompt('Введіть перше число:', '');
-console.log(number1);
 
 while (number1 === null || number1.trim() === '' || isNaN(+number1)) {
   if(number1 === null) {
@@ -189,7 +188,6 @@ while (number1 === null || number1.trim() === '' || isNaN(+number1)) {
 }
 
 let number2 = prompt('Введіть друге ціле число, яке більше за 1:');
-console.log(number2);
 
 while (number2 === null || number2.trim() === '' || isNaN(+number2) || number2 < 1 || !Number.isInteger(+number2)) {
   if(number2 === null) {
@@ -203,3 +201,26 @@ while (number2 === null || number2.trim() === '' || isNaN(+number2) || number2 <
 }
 
 document.writeln(`Функція №13: ${getPowNumber(number1, number2)} <br>`);
+
+/* 14.Перепишіть з використанням стрілкових функцій:
+function ask(question, yes, no) {
+  if (confirm(question)) yes();
+  else no();
+}
+
+ask(
+  "Ви згодні?",
+  function() { alert("Ви погодились."); },
+  function() { alert("Ви скасували виконання."); }
+); */
+
+let ask = (question, yes, no) => {
+  if (confirm(question)) yes();
+  else no();
+}
+
+ask(
+  "Ви згодні?",
+  () => alert("Ви погодились."),
+  () => alert("Ви скасували виконання.")
+);
