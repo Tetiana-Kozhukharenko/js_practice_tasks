@@ -70,3 +70,59 @@ prices2.sort(function(a, b) {
 
 console.log(prices2);
 
+// 7.Створіть масив styles з елементами “Jazz” та “Blues”. Додайте “Rock-n-Roll” в кінець масиву.
+
+const styles = ['Jazz', 'Blues'];
+
+styles.push('Rock-n-Roll');
+
+console.log(styles);
+
+// 8.Замініть значення в середині масиву на “Classics”. Ваш код повинен шукати медіанний елемент у масивах будь-якої довжини.
+
+const middleOfArray = Math.floor(styles.length / 2);
+
+styles[middleOfArray] = 'Classics';
+
+console.log(styles);
+
+// 9.Видаліть перший елемент масиву та покажіть його.
+
+const firstElement = styles.shift();
+
+console.log(firstElement);
+
+// 10.Вставте Rap та Reggae на початок масиву.
+
+styles.unshift('Rap', 'Reggae');
+
+console.log(styles);
+
+/* 11.Напишіть функцію getSumInput(), яка просить користувача ввести числа за допомогою prompt та зберігає їх в масив.
+Треба закінчити робити запити в користувача після того, як введено не числове значення, порожній рядок або натиснуто “відмінити”.
+Функція підраховує та повертає суму елементів масиву. */
+
+function getSumInput() {
+  const nums = [];
+  let res = 0;
+
+  while (true) {
+    let num = prompt('Введіть число:', '');
+  
+    if (isNaN(+num) || num === null || num.trim() === '') {
+      alert('Ви ввели не число!')
+      break;
+    } else {
+      nums.push(+num);
+      continue;
+    }
+  }
+
+  for (let num of nums) {
+    res += num;
+  }
+
+  return alert(`Сума введених чисел дорівнює: ${res}`);
+}
+
+getSumInput();
