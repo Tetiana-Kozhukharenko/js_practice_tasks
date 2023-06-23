@@ -125,4 +125,130 @@ function getSumInput() {
   return alert(`Сума введених чисел дорівнює: ${res}`);
 }
 
-getSumInput();
+getSumInput(); 
+
+/* 12.Напишіть функцію camelize(str), яка перетворює такі рядки “my-short-string” в “myShortString”. Тобто дефіси видаляються, 
+а всі слова після них починаються з великої літери. */
+
+function camelize(str) {
+  const newStr = [];
+  const arrSymbols = str.split('');
+
+  for(let i = 0; i < arrSymbols.length; i++) {
+    if(arrSymbols[i].includes('-')) {
+      let bigSym = arrSymbols[i + 1].toUpperCase();
+      newStr.push(bigSym);
+      i++;
+    } else {
+      newStr.push(arrSymbols[i]);
+    }
+  }
+  return newStr.join('');
+}
+
+const camelizeStr = camelize('background-color');
+console.log(camelizeStr);
+
+/* 13.Напишіть функцію filterRange(arr, a, b), яка приймає масив arr, шукає в ньому елементи більші-рівні a та менші-рівні b 
+і віддає масив цих елементів. Функція повинна повертати новий масив і не змінювати вихідний. */
+
+const numArr = [5, 3, 8, 1];
+
+// Перший варіант розв'язку:
+
+function filterRange(arr, a, b) {
+  const newArr = [];
+
+  arr.forEach((el) => {
+    if (el >= a && el <= b) {
+      newArr.push(el);
+    }
+  });
+  return newArr;
+}
+
+const filteredArr = filterRange(numArr, 1, 4);
+console.log(filteredArr);
+console.log(numArr);
+
+// Другий варіант розв'язку:
+function filterRange2(arr, a, b) {
+
+  let newArr = arr.filter(el => el >= a && el <= b);
+
+  return newArr;
+}
+
+const filteredArr2 = filterRange2(numArr, 1, 4);
+console.log(filteredArr2);
+console.log(numArr);
+
+/* 14.Напишіть функцію filterRangeInPlace(arr, a, b), яка приймає масив arr і видаляє з нього всі значення крім тих, які 
+знаходяться між a і b. */
+
+const arrNum = [2, 5, 3, 8, 4, 5, 1];
+
+function filterRangeInPlace(arr, a, b) {
+  const newArr = [];
+
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] >= a && arr[i] <= b) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+
+const ans = filterRangeInPlace(arrNum, 1, 4);
+console.log(ans);
+
+// 15.Відсортуйте за спаданням масив чисел.
+const arr = [5, 2, 1, -10, 8];
+
+// Перший варіант розв'язку:
+arr.sort((a,b) => b - a);
+
+// Другий варіант розв'язку:
+arr.sort((a, b) => {
+  if (a > b) {
+    return -1
+  } else if (a == b) {
+    return 0
+  } else {
+    return 1
+  }
+});
+
+console.log(arr);
+
+// 16.Створіть функцію copySorted(arr), яка буде повертати копію відсортованого масиву.
+let arrStr = ["HTML", "JavaScript", "CSS"];
+
+function copySorted(arr) {
+  const copy = arr.slice().sort();
+  return copy;
+}
+
+const copySortedArr = copySorted(arrStr);
+console.log(copySortedArr);
+console.log(arrStr);
+
+/* 17.Напишіть функцію unique(arr), яка повертає масив, що містить тільки унікальні елементи arr. */
+
+const strings = ["Привіт", "Світ", "Привіт", "Світ", "Привіт", "Привіт", "Світ", "Світ", ":-O"];
+
+function unique(arr) {
+  let newArr = [];
+
+  for(let i = 0; i < arr.length; i++) {
+    if(newArr.includes(arr[i])) {
+
+    } else {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+
+const uniqueEl = unique(strings);
+console.log(uniqueEl);
