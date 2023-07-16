@@ -65,3 +65,101 @@ function multiplyNumeric(obj) {
 
 multiplyNumeric(menu);
 console.log(menu);
+
+/* 5.Створіть об’єкт calculator з трьома методами:
+read() запитує два значення та зберігає їх як властивості об’єкта з іменами a та b,
+sum() повертає суму збережених значень,
+mul() множить збережені значення і повертає результат. */
+
+const calculator = {
+  read() {
+    this.a = +prompt('Введіть перше число:', '0');
+    this.b = +prompt('Введіть друге число:', '0');
+  },
+
+  sum() {
+    return this.a + this.b;
+  },
+
+  mul() {
+    return this.a * this.b;
+  },
+}
+
+calculator.read();
+const sum = calculator.sum();
+console.log(sum);
+const multiplication = calculator.mul();
+console.log(multiplication);
+
+/* 6.Об’єкт ladder дозволяє підійматися вгору-вниз. Тепер, якщо нам потрібно зробити кілька викликів послідовно,
+можна зробити це так:
+ladder.up();
+ladder.up();
+ladder.down();
+ladder.showStep();
+Змініть код так, щоб зробити доступним ланцюг викликів. */
+
+let ladder = {
+  step: 0,
+
+  up() {
+    this.step++;
+    return this;
+  },
+
+  down() {
+    this.step--;
+    return this;
+  },
+
+  showStep() {
+    alert( this.step );
+    return this;
+  }
+};
+
+ladder.up().up().down().showStep();
+
+/* 7.Створіть функцію-конструктор Calculator, яка створює об’єкти з трьома методами:
+read() запитує два значення за допомогою prompt і запам’ятовує їх у властивостях об’єкта,
+sum() повертає суму цих властивостей,
+mul() повертає результат множення даних властивостей. */
+
+function Calculator() {
+  this.read = function() {
+    this.num1 = +prompt('Введіть перше число:', '0');
+    this.num2 = +prompt('Введіть друге число:', '0');
+  };
+
+  this.sum = function() {
+    return this.num1 + this.num2;
+  };
+
+  this.mul = function() {
+    return this.num1 * this.num2;
+  };
+}
+
+let calculator2 = new Calculator();
+calculator2.read();
+
+alert( "Sum = " + calculator2.sum() );
+alert( "Mul = " + calculator2.mul() );
+
+/* 8.Створіть функцію-конструктор Accumulator(startingValue). Об’єкт, який він створює повинен:
+Зберігати “поточне значення” у властивості value. Початкове значення має значення аргументу конструктора startingValue.
+Метод read() повинен використовувати prompt для зчитування нового числа та додавати його до value. */
+
+function Accumulator(startingValue) {
+  this.value = startingValue;
+
+  this.read = function() {
+    this.value += +prompt('Введіть число:', '');
+  };
+}
+
+let accumulator = new Accumulator(1);
+console.log(accumulator.value);
+accumulator.read();
+console.log(accumulator.value);
