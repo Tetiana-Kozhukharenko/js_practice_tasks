@@ -224,3 +224,74 @@ ask(
   () => alert("Ви погодились."),
   () => alert("Ви скасували виконання.")
 );
+
+/* 15.Створіть функцію readNumber, яка запросить число, поки відвідувач не введе дійсне числове значення.
+Отримане значення потрібно повернути як число. Відвідувач також може зупинити процес, ввівши порожній рядок
+або натиснувши “CANCEL”. У цьому випадку функція повинна повернути null. */
+
+function readNumber() {
+  let number;
+
+  while(true) {
+    number = prompt('Введіть число:', '0');
+
+    if(number === null || number.trim() === '') {
+      console.log('Ви відмінили ввід числа або ввели порожній рядок!');
+      return null;
+
+    } else if(!isNaN(+number)) {
+      break;
+
+    } else {
+      console.log('Ви ввели не число!');
+    }
+  }
+
+  return +number;
+}
+
+const number = readNumber();
+console.log(number);
+
+
+// 16.Напишіть функцію checkSpam(str), яка повертає true, якщо str містить ‘viagra’ or ‘XXX’, інакше false.
+
+function checkSpam(str) {
+  const strLowerCase = str.toLowerCase();
+
+  if(strLowerCase.includes('viagra') || strLowerCase.includes('xxx')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const isStrIncludesSpam = checkSpam('buy ViAgRA now');
+console.log(isStrIncludesSpam);
+
+/* 17.Створіть функцію truncate(str, maxlength), яка перевіряє довжину str і, якщо вона перевищує maxlength – замінює
+кінець str символом трьох крапок "…", щоб його довжина була рівною maxlength. */
+
+function truncate(str, maxlength) {
+  let strLess20;
+
+  if(str.length > maxlength) {
+    strLess20 = str.slice(0, maxlength - 1) + '...';
+    return strLess20;
+  } else {
+    return str;
+  }
+}
+
+const truncateStr = truncate("Що я хотів би розповісти на цю тему:", 20);
+console.log(truncateStr);
+
+/* 18.У нас є вартість у вигляді "$120". Тобто: спочатку йде знак долара, а потім число.
+Створіть функцію extractCurrencyValue(str), яка витягне числове значення з такого рядка та поверне його. */
+
+function extractCurrencyValue(str) {
+  return +str.slice(1);
+}
+
+const extractedValue = extractCurrencyValue("$120");
+console.log(extractedValue);
