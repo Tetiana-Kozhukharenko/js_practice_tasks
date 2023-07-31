@@ -131,25 +131,25 @@ getSumInput();
 а всі слова після них починаються з великої літери. */
 
 function camelize(str) {
-  const newStr = [];
-  const arrSymbols = str.split('');
+  let newArr = [];
+  const characterArray = str.split('');
 
-  for(let i = 0; i < arrSymbols.length; i++) {
-    if(arrSymbols[i].includes('-')) {
-      let bigSym = arrSymbols[i + 1].toUpperCase();
-      newStr.push(bigSym);
+  for(let i = 0; i < characterArray.length; i++) {
+    if( characterArray[i].includes('-') ) {
       i++;
+      newArr.push( characterArray[i].toUpperCase() );
     } else {
-      newStr.push(arrSymbols[i]);
+      newArr.push(characterArray[i]);
     }
   }
-  return newStr.join('');
+
+  return newArr.join('');
 }
 
-const camelizeStr = camelize('background-color');
+const camelizeStr = camelize('my-short-string');
 console.log(camelizeStr);
 
-/* 13.Напишіть функцію filterRange(arr, a, b), яка приймає масив arr, шукає в ньому елементи більші-рівні a та менші-рівні b 
+/* 13.Напишіть функцію filterRange(arr, a, b), яка приймає масив arr, шукає в ньому елементи більші-рівні a та менші-рівні b
 і віддає масив цих елементів. Функція повинна повертати новий масив і не змінювати вихідний. */
 
 const numArr = [5, 3, 8, 1];
@@ -172,11 +172,9 @@ console.log(filteredArr);
 console.log(numArr);
 
 // Другий варіант розв'язку:
+
 function filterRange2(arr, a, b) {
-
-  let newArr = arr.filter(el => el >= a && el <= b);
-
-  return newArr;
+  return arr.filter(el => el >= a && el <= b);
 }
 
 const filteredArr2 = filterRange2(numArr, 1, 4);
@@ -206,9 +204,11 @@ console.log(ans);
 const arr = [5, 2, 1, -10, 8];
 
 // Перший варіант розв'язку:
+
 arr.sort((a,b) => b - a);
 
 // Другий варіант розв'язку:
+
 arr.sort((a, b) => {
   if (a > b) {
     return -1
@@ -222,11 +222,12 @@ arr.sort((a, b) => {
 console.log(arr);
 
 // 16.Створіть функцію copySorted(arr), яка буде повертати копію відсортованого масиву.
+
 let arrStr = ["HTML", "JavaScript", "CSS"];
 
 function copySorted(arr) {
-  const copy = arr.slice().sort();
-  return copy;
+  const arrayCopy = arr.slice();
+  return arrayCopy.sort();
 }
 
 const copySortedArr = copySorted(arrStr);
@@ -252,3 +253,65 @@ function unique(arr) {
 
 const uniqueEl = unique(strings);
 console.log(uniqueEl);
+
+// 18.Є масив об’єктів, в кожному з них є name. Напишіть код, який перетворює їх в масив імен.
+
+const ivan = { name: "Іван", age: 25 };
+const petro = { name: "Петро", age: 30 };
+const mariya = { name: "Марія", age: 28 };
+
+const users = [ ivan, petro, mariya ];
+
+function getusersNames(arr) {
+  let names = [];
+
+  for(let i = 0; i < arr.length; i++) {
+    names.push( arr[i].name );
+  }
+  return names;
+}
+
+const namesUsers = getusersNames(users);
+console.log(namesUsers);
+
+/* 19.Є масив обʼєктів, у кожного є name, surname та id. Напишіть код, який створить ще один масив
+обʼєктів з параметрами id й fullName, де fullName – складається з name та surname. */
+
+const ivan2 = { name: "Іван", surname: "Іванко", id: 1 };
+const petro2 = { name: "Петро", surname: "Петренко", id: 2 };
+const mariya2 = { name: "Марія", surname: "Мрійко", id: 3 };
+
+const users2 = [ ivan2, petro2, mariya2 ];
+
+function getNewArrUsersMapped(arr) {
+  const usersMapped = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const obj = {};
+    obj.fullName = arr[i].name + ' ' + arr[i].surname;
+    obj.id = arr[i].id;
+    usersMapped.push(obj);
+  }
+  return usersMapped;
+}
+
+const arrUsersMapped = getNewArrUsersMapped(users2);
+console.log(arrUsersMapped);
+
+/* 20.Напишіть функцію sortByAge(users), яка відсортує масив об'єктів користувачів за віком, функція
+приймає масив обʼєктів з властивістю age і сортує їх по цій властивості. */
+
+const ivan3 = { name: "Іван", age: 25 };
+const petro3 = { name: "Петро", age: 30 };
+const mariya3 = { name: "Марія", age: 28 };
+
+const arrUsers = [ petro, ivan, mariya ];
+
+function sortByAge(users) {
+  const copyArr = users.slice();
+
+  return copyArr.sort( (a, b) => a.age - b.age );
+}
+
+const sortedByAge = sortByAge(arrUsers);
+console.log(sortedByAge);
