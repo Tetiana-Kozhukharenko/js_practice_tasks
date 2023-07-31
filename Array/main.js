@@ -234,25 +234,23 @@ const copySortedArr = copySorted(arrStr);
 console.log(copySortedArr);
 console.log(arrStr);
 
-/* 17.Напишіть функцію unique(arr), яка повертає масив, що містить тільки унікальні елементи arr. */
+// 17.Напишіть функцію unique(arr), яка повертає масив, що містить тільки унікальні елементи arr.
 
 const strings = ["Привіт", "Світ", "Привіт", "Світ", "Привіт", "Привіт", "Світ", "Світ", ":-O"];
 
 function unique(arr) {
-  let newArr = [];
+  const newArr = [];
 
-  for(let i = 0; i < arr.length; i++) {
-    if(newArr.includes(arr[i])) {
-
-    } else {
-      newArr.push(arr[i]);
+  for(let string of arr) {
+    if(!newArr.includes(string)) {
+      newArr.push(string);
     }
   }
   return newArr;
 }
 
-const uniqueEl = unique(strings);
-console.log(uniqueEl);
+const uniqueElements = unique(strings);
+console.log(uniqueElements);
 
 // 18.Є масив об’єктів, в кожному з них є name. Напишіть код, який перетворює їх в масив імен.
 
@@ -315,3 +313,41 @@ function sortByAge(users) {
 
 const sortedByAge = sortByAge(arrUsers);
 console.log(sortedByAge);
+
+// 21.Напишіть функцію getAverageAge(users), яка приймає масив об’єктів з властивістю age та повертає середній вік.
+
+const john = { name: "John", age: 25 };
+const pete = { name: "Pete", age: 30 };
+const mary = { name: "Mary", age: 29 };
+
+const arrUsers2 = [ john, pete, mary ];
+
+function getAverageAge(users) {
+  const ans = users.reduce( (sum, user) => sum + user.age, 0);
+  return ans / users.length;
+}
+
+const middleAge = getAverageAge(arrUsers2);
+console.log(middleAge);
+
+/* 22.Припустимо, ви отримали масив користувачів у вигляді {id:..., name:..., age:...}. Створіть
+функцію groupById(arr), яка створює з масиву об’єкт із ключом id та елементами масиву як значеннями. */
+
+const users1 = [
+  {id: 'іван', name: "Іван Іванко", age: 20},
+  {id: 'ганна', name: "Ганна Іванко", age: 24},
+  {id: 'петро', name: "Петро Петренко", age: 31},
+];
+
+function groupById(arr) {
+  const newObj = {};
+
+  for(let i = 0; i < arr.length; i++) {
+    let id = arr[i].id;
+    newObj[id] = arr[i];
+  }
+  return newObj;
+}
+
+const usersById = groupById(users1);
+console.log(usersById);
